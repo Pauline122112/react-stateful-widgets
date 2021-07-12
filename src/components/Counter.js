@@ -21,10 +21,7 @@ STEP 0:
 
 
 
-STEP 3:
-  We need to replace some hard-coded info in the JSX with expressions, interpolated inside curly brackets.
-  Start by replacing the character "0" with {count}. The 'count' slice of state is the source of truth here.
-  Then, replace the word "even" with a ternary: {if count is even number, then string "even", else string "odd"}.
+
 
 STEP 4:
   This click handler needs to use 'setCount' to schedule the 'count' to become the current 'count' plus one.
@@ -57,14 +54,14 @@ export default function Counter() {
   // If count is even, then "royalblue", else "crimson".
 
 
-  const increment = () => {
-    /* STEP 4 */
+  const increment = (event) => {
+    setCount(count + 1)
   };
   const decrement = () => {
-    /* STEP 5 */
+    setCount(count - 1)
   };
   const reset = () => {
-    /* STEP 6 */
+    setCount(count * 0)
   };
 
   const style = {
@@ -77,8 +74,12 @@ export default function Counter() {
     <div className='widget-counter container'>
       <h2>Counter</h2>
       <div id='count' style={style}>
-        Number {count} is {count % 2 === 0 ? 'even' : 'odd'}
+        <p>Number {count} is {count % 2 === 0 ? 'even' : 'odd'}</p>
       </div>
+      {/* STEP 3:
+  We need to replace some hard-coded info in the JSX with expressions, interpolated inside curly brackets.
+  Start by replacing the character "0" with {count}. The 'count' slice of state is the source of truth here.
+  Then, replace the word "even" with a ternary: {if count is even number, then string "even", else string "odd"}. */}
       <div>
         <button id='increment' onClick={increment}>Increment</button>
         <button id='decrement' onClick={decrement}>Decrement</button>
